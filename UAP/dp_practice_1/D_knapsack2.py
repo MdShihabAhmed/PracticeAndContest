@@ -4,20 +4,21 @@ input = sys.stdin.readline
 
 def solver(n, W, weight, value):
     v = 10**5
-    dp = [[float('inf') for i in range(v+1)] for i in range(n+1)]
-    
-    for i in range(n+1):
-        dp[i][0]=0
+    dpPrevious = [float('inf') for i in range(v+1)]
+    dpPrevious[0] = 0
+    dpCurrent = [float('inf') for i in range(v+1)]
+    dpCurrent[0] = 0
 
     for i in range(1, n+1):
         for j in range(1, v+1):
             if j-value[i-1]<0:
-                dp[i][j] = dp[i-1][j]
+                dpCurrent[j] = dpPrevious[j]
             else:
-                dp[i][j] = min(dp[i-1][j], dp[i-1][j-value[i-1]]+weight[i-1])
+                dpCurrent[j] = min(dpPrevious[j], dpPrevious[j-value[i-1]]+weight[i-1])
+        dpCurrent, dpPrevious = dpPrevious, dpCurrent
 
     for j in range(v,-1,-1):
-        if dp[-1][j] <= W:
+        if dpPrevious[j] <= W:
             return j
 
 for _ in range(1):
