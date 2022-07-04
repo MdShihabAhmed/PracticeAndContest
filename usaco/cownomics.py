@@ -15,15 +15,14 @@ def solver(filename):
 
     result = 0
     for i in range(m):
-        temp = []
+        temp = set()
         for j in range(n):
-            temp.append(spottyCow[j][i])
-        flag = False
+            temp.add(spottyCow[j][i])
+
         for j in range(n):
             if plainCow[j][i] in temp:
-                flag = True
                 break
-        if not flag:
+        else:   #learned something new :3
             result+=1
     
     print(result)
