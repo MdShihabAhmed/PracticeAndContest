@@ -6,14 +6,28 @@ def solver(filename):
 
 	#solve here
 	k, n = map(int,input().split())
-	results = [n]*n
+	ranks = []
 	for _ in range(k):
-		ranks = list(map(int,input().split()))
-		for i in range(n):
-			results[ranks[i]-1] = min(n-1-i,results[ranks[i]-1])
+		ranks.append(list(map(int,input().split())))
+	results = [[1 for i in range(n)] for j in range(n)]
 	
-	print(results)
-	print(sum(results))
+	for i in range(n):
+		for j in range(k):
+			for l in range(n):
+				if i+1==ranks[j][l]:
+					results[i][ranks[j][l]-1]-=1
+					break
+				results[i][ranks[j][l]-1]-=1
+
+	summ = 0
+	for i in range(n):
+		for j in range(n):
+			if results[i][j]>0:
+				summ+=results[i][j]
+
+	print(summ)	
+		
+
 
 if __name__ == "__main__":
 	solver('gymnastics')
