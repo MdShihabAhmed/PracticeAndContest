@@ -8,9 +8,9 @@ breedID = list(map(int,input().split()))
 odd = even = 0
 for i in range(n):
     if breedID[i]%2:
-        odd+=1
+        odd += 1
     else:
-        even+=1
+        even += 1
 
 result = 0
 
@@ -19,13 +19,14 @@ result += temp*2
 
 odd -= temp
 even -= temp
-if not odd:
+
+if not odd and even:
     result+=1
 else:
     result += (odd//3)*2
-    odd%=3
-    result+=odd//2
-    odd%=2
-    result-=odd
+    odd %= 3
+    result += odd//2
+    odd %= 2
+    result -= odd
 
 print(result)
