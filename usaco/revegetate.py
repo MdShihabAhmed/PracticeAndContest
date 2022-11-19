@@ -15,15 +15,11 @@ def solver(filename):
 	result = [0]*(n)
 	grass = {1,2,3,4}
 	for i in range(1,n+1):
-		if not result[i-1]:
-			result[i-1] = 1
+		temp = set()
 		for j in graph[i]:
-			temp = set()
-			for k in graph[j]:
-				if k<j:
-					temp.add(result[k-1])
-			temp = list(grass.difference(temp))
-			result[j-1] = min(list(temp))
+			temp.add(result[j-1])
+		temp = grass-temp
+		result[i-1] = min(temp)
 	
 	print(*result,sep='')
 
