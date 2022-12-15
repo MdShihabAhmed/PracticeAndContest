@@ -5,27 +5,23 @@ def solver(filename):
 	sys.stdout = open(filename + '.out', 'w')
 
 	n = int(input())
+	
 	result = 0
 	distinctIDs = []
 	prefixSum = [0]*(n+1)
+	
+	first = [0]*7
+	
 	for i in range(n):
 		distinctIDs.append(int(input()))
 		prefixSum[i+1] = (prefixSum[i]+distinctIDs[-1])%7
 
-	first = [0]*7
-	second = [0]*7
-	for i in range(1,n+1):
-		if first[prefixSum[i]]:
-			second[prefixSum[i]] = i
+		if first[prefixSum[i+1]]:
+			result = max(result, i+1-first[prefixSum[i+1]])
 		else:
-			first[prefixSum[i]] = i
+			first[prefixSum[i+1]] = i+1
 
-	result = 0
-	for i in range(7):
-		result = max(result, second[i]-first[i])
-	
 	print(result)
-
 
 if __name__ == "__main__":
 	solver('div7')
