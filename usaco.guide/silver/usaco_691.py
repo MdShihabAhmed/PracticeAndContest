@@ -5,7 +5,7 @@ def solver(filename):
 	sys.stdout = open(filename + '.out', 'w')
 
 	n = int(input())
-	gestures = []
+
 	h = [0]
 	p = [0]
 	s = [0]
