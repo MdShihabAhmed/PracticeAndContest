@@ -11,11 +11,12 @@ def solver(filename):
 	for i in range(b):
 		signals[int(input())] = 1
 	
-	for i in range(n):
-		signals[i+1]+=signals[i]
-	
 	result = n
-	for i in range(k,n+1):
+	for i in range(1,n+1):
+		signals[i]+=signals[i-1]
+	
+		if i<k:
+			continue
 		result = min(result,signals[i]-signals[i-k])
 	
 	print(result)
