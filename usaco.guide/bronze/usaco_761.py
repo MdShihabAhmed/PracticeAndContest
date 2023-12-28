@@ -20,7 +20,11 @@ def solver(filename):
 		cows[days[i][0]]+=int(days[i][1])
 		
 		m = max(cows.values())
-		current = (k for k,v in cows.items() if cows[k]==m)
+		current = set()
+		for k,v in cows.items():
+			if cows[k]==m:
+				current.add(k)
+
 		if previous != current:
 			result +=1
 		previous = current
