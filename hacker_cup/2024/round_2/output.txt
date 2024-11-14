@@ -1,0 +1,24 @@
+4 35
+8 42
+Case #1: C
+4 42
+4 42
+Case #2: ?
+8 14
+4 7
+Case #3: F
+inf -inf
+inf -inf
+Case #4: 0
+5 35
+24 42
+Case #5: C
+inf -inf
+6 42
+Case #6: F
+inf -inf
+inf -inf
+Case #7: 0
+16 35
+12 42
+Case #8: C

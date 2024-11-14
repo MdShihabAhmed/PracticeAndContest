@@ -14,28 +14,42 @@ int main(){
     }
     sort(diamonds,diamonds+n);
     
+    int dia[n];
     int i=0,j=0;
-    vector<int> results;
-    results.push_back(0);
-    results.push_back(0);
-    int result = 0;
-    int temp = 0;
+    dia[j]=1;
     while(i<=j && j<n){
-        if(diamonds[j]-diamonds[i]<=k){
-            temp = j-i+1;
-            j++;
+
+
+        if (j+1<n && diamonds[j+1]-diamonds[i]<=k){
+            j+=1;
+            dia[j]=(j-i+1);
+
         }
         else{
-            results.push_back(temp);
-            while(i<j && diamonds[j]-diamonds[i]>k){
-                i++;
+            i+=1;
+            if(j<i){
+                j=i;
+                dia[j]=1;
             }
         }
     }
-    results.push_back(temp);
-    sort(results.begin(),results.end(),greater<int>());
-    result+=results[0];
-    result+=results[1];
-    printf("%d\n",result);
+
+    i=1,j=i;
+    int result= 0;
+    int temp = dia[0];
+    while(i<=j && j<n){
+        if (j+1<n && diamonds[j+1]-diamonds[i]<=k){
+            j+=1;
+            result = max(result,temp+(j-i+1));
+        }
+        else{
+            temp = max(temp,dia[i]);
+            i+=1;
+            if(j<i){
+                j=i;
+            }
+        }
+    }
+    cout<< result <<"\n";
     return 0;
 }
