@@ -12,12 +12,12 @@ for _ in range(int(input())):
 
     result = pre[-1]
     # print(pre)
-    for i in range(2,k+2):
-        for j in range(z):
-            temp = k+1-(j+1)*2
-            if temp<=len(pre) and temp>=i:
-                result = max(result, (pre[i]-pre[i-2])*(j+1)+pre[temp])
-                # print(result,i,j,(pre[i]-pre[i-2])*(j+1)+pre[temp])
+    for i in range(1,k+2):
+        for j in range(1,z+1):
+            temp = (k-(j)*2)
+            if temp+1>=i:
+                result = max(result, (pre[i+1]-pre[i-1])*(j)+pre[temp+1])
+                # print(result,temp,i,j,(pre[i+1]-pre[i-1]),pre[temp+1])
     
     print(result)
         
