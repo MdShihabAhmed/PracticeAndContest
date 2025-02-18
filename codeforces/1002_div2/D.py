@@ -54,4 +54,5 @@ for _ in range(int(input())):
     dist2, parents2 = dijkstra(graph2, s2)
 
     result = float('inf')
-    for i in range(n)
+    for i in range(n):
+        if dist
