@@ -2,22 +2,31 @@ import sys
 
 input = sys.stdin.readline
 
-
 for _ in range(int(input())):
-    n, k= map(int,input().split())
+    n = int(input())
     a = list(map(int,input().split()))
-    a.sort(reverse=True)
-    re = a[0]
-    result = 0
-    for i in range(1,n):
-        if re+a[i]==k:
-            re+=a[i]
-            break
-        if re+a[i]>k:
-            result=k-re
-            re+=(k-re)
-            break
-        re+=a[i]
-    if re<k:
-        result=k-re
-    print(result)
+    result = [-1]*(n)
+
+    temp = 1
+    for i in range(n-2):
+        if a[i]==1:
+            if result[i]==result[i+1]:
+                if result[i]==-1:
+                    result[i]=temp 
+                    result[i+1]=temp 
+                    result[i+2]=temp 
+                    temp+=1
+                else:
+                    result[i+2]=result[i]
+            else:
+                print("NO")
+                break
+        else:
+            if result[i]==result[i+1]:
+                if result[i]==-1:
+                    pass
+                else:
+                    result[i+2]=temp
+                    temp+=1
+    else:
+        print("YES")
